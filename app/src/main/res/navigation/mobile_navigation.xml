@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_menu">
+
+    <fragment
+        android:id="@+id/nav_menu"
+        android:name="com.rrdsolutions.paleodelights.ui.menuitems.MenuFragment"
+        android:label="Menu"
+        tools:layout="@layout/fragment_menu" />
+
+    <fragment
+        android:id="@+id/nav_deliverystatus"
+        android:name="com.rrdsolutions.paleodelights.ui.deliverystatus.DeliveryStatusFragment"
+        android:label="Delivery Status"
+        tools:layout="@layout/fragment_deliverystatus" />
+
+    <fragment
+        android:id="@+id/nav_aboutus"
+        android:name="com.rrdsolutions.paleodelights.ui.aboutus.AboutUsFragment"
+        android:label="About Us"
+        tools:layout="@layout/fragment_aboutus" />
+
+    <fragment
+        android:id="@+id/nav_location"
+        android:name="com.rrdsolutions.paleodelights.ui.location.LocationFragment"
+        android:label="Location"
+        tools:layout="@layout/fragment_location" />
+
+
+
+
+
+</navigation>
