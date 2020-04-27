@@ -98,7 +98,7 @@ class MenuFragment : Fragment() {
             val fragment_menu_items = layoutInflater.inflate(R.layout.fragment_menu_items, null)
 
             for (i in 0 until array.size) {
-                val menucard = layoutInflater.inflate(R.layout.menucard2, null)
+                val menucard = layoutInflater.inflate(R.layout.menucard, null)
 
                 menucard.name.text = array[i].name
                 val product = array[i].price
