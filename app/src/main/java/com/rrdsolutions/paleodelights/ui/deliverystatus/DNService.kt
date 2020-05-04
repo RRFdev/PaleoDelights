@@ -36,55 +36,12 @@ class DNService : IntentService("CTService") {
 
                    if (status == "DELIVERED" || status == "CANCELED"){
                        notify(status, documentname)
-                       updateDeliveryStatusOnApp(status)
+                       updateDeliveryStatus()
                        //stopSelf()
                    }
                }
             }
         }
-//
-//
-//
-//
-//        val db = FirebaseFirestore.getInstance()
-//            .collection("customer orders")
-//            .whereEqualTo("phonenumber", phonenumber)
-//            .whereEqualTo("status", "IN PROGRESS")
-//
-//        db.get()
-//            .addOnSuccessListener { documents ->
-//                for (document in documents) {
-//                    documentname = document.id
-//                    Log.d("DNService", "document name: $documentname")
-//
-//                    val db2 = FirebaseFirestore.getInstance()
-//                        .collection("customer orders")
-//                        .document(documentname)
-//
-//                    db2.addSnapshotListener { snapshot, e ->
-//                        if (e != null) {
-//                            Log.d("DNService", "Listen failed.", e)
-//                            return@addSnapshotListener
-//                        }
-//                        if (snapshot != null && snapshot.exists()) {
-//                            val status = snapshot.data?.get("status") as String
-//                            Log.d("DNService", "current status: $status")
-//
-//                            notify(status, documentname)
-//                            broadcast(status)
-//
-//                            stopSelf()
-//                        } else {
-//                            Log.d("DNService", "Current data: null")
-//                        }
-//                    }
-//                }
-//
-//
-//            }
-//            .addOnFailureListener {
-//                Log.d("DNService", "query failed")
-//            }
 
     }
 
@@ -124,10 +81,6 @@ class DNService : IntentService("CTService") {
                 callback(status)
                 Log.d("DNService", "current status: $status")
 
-//                notify(status, documentname)
-//                broadcast(status)
-//
-//                stopSelf()
             } else {
                 callback("")
                 Log.d("DNService", "Current data: null")
@@ -152,11 +105,10 @@ class DNService : IntentService("CTService") {
 
     }
 
-    fun updateDeliveryStatusOnApp(status:String){
+    fun updateDeliveryStatus(){
 
         val intent = Intent().apply{ action = "DeliveryStatusFragment" }
         //intent.action = "DeliveryStatusFragment"
-
         sendBroadcast(intent)
 
 
