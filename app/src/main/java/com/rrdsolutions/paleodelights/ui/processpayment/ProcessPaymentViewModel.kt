@@ -58,7 +58,8 @@ class ProcessPaymentViewModel: ViewModel() {
                         "eta" to eta,
                         "itemlist" to itemlist,
                         "address" to address,
-                        "status" to "IN PROGRESS"
+                        "status" to "IN PROGRESS",
+                        "rider" to ""
                     )
 
                     db.document(number).set(order)

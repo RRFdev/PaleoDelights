@@ -22,7 +22,8 @@
         android:layout_marginRight="24dp"
         android:ems="10"
         android:gravity="center_horizontal"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColor="@color/md_disabled_text_light_theme" />
 
     <Button
         android:id="@+id/btn"

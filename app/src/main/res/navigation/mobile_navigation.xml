@@ -9,6 +9,7 @@
         android:id="@+id/nav_menu"
         android:name="com.rrdsolutions.paleodelights.ui.menuitems.MenuFragment"
         android:label="Menu"
+
         tools:layout="@layout/fragment_menu" />
 
     <fragment

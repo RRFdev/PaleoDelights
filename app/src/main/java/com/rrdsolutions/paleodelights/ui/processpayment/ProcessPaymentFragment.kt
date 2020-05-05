@@ -57,7 +57,7 @@ class ProcessPaymentFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         getActivity()?.findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.loadingscreenmain2)?.visibility =
-            View.INVISIBLE
+            View.GONE
 
         vm.menu = MenuModel.menu
 
@@ -66,7 +66,8 @@ class ProcessPaymentFragment : Fragment() {
         buildPurchaseDetails(vm.menu.appetizermenu)
         buildPurchaseTotal()
 
-        val fromGetAdressFragment = activity?.getSharedPreferences("address", 0)?.getString("address", "")
+        val fromGetAdressFragment = activity?.getPreferences( 0)?.getString("address", "").toString()
+        Log.d("_pptest", "address = $fromGetAdressFragment")
         edt_address.setText(fromGetAdressFragment)
 
         locationbutton.setOnClickListener {
@@ -128,6 +129,13 @@ class ProcessPaymentFragment : Fragment() {
             }
 
         }
+    }
+
+    override fun onResume(){
+        super.onResume()
+        val fromGetAdressFragment = activity?.getPreferences( 0)?.getString("address", "").toString()
+        Log.d("_pptest", "address = $fromGetAdressFragment")
+        edt_address.setText(fromGetAdressFragment)
     }
 
     @SuppressLint("SetTextI18n")

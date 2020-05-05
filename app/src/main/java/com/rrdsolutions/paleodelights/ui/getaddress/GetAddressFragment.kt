@@ -52,9 +52,15 @@ class GetAddressFragment: Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClic
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity().baseContext)
 
         btn.setOnClickListener{
-            activity?.getSharedPreferences("address", 0)?.edit()
-                ?.putString("address", edt.getText().toString())?.apply()
-            Log.e("maptest", "saved string is " + activity?.getSharedPreferences("address", 0)?.getString("address", ""))
+
+            val editedaddress = edt.getText().toString()
+            Log.e("maptest", "editedaddress =$editedaddress")
+
+            activity?.getPreferences( 0)?.edit()
+                ?.putString("address", editedaddress)?.apply()
+
+
+            Log.e("maptest", "saved string is " + activity?.getPreferences( 0)?.getString("address", ""))
 
             moveBackToProcessPayment()
         }
