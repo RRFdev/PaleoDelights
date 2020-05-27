@@ -38,18 +38,17 @@ class DeliveryStatusViewModel: ViewModel() {
                         for (document in documents){
                             val order = OrderModel.Order(
                                 document.id,
-                                document.data["phonenumber"] as String,
+                                document.data["  phonenumber"] as String,
                                 document.data["time"] as String,
                                 document.data["eta"] as String,
                                 document.data["itemlist"] as List<String>,
                                 document.data["address"] as String,
                                 document.data["status"] as String
                             )
-
-                            //!!
                             orderlist.add(order)
-                            callback(true)
+                            //callback(true)
                         }
+                        callback(true)
                     }
 
                 }

@@ -93,7 +93,7 @@ class GetAddressFragment: Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClic
             fusedLocationClient.lastLocation.addOnSuccessListener {
                 if (it != null){
                     lastLocation = it
-                    ////
+                    ////THIS ONE!!!!
                     val userLoc = LatLng(it.latitude, it.longitude)
                     Log.d("maptest", "lat = " + it.latitude + " lng + " + it.longitude)
                     val titleStr = getAddress(userLoc)

@@ -65,6 +65,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="16dp"
                     android:gravity="center"
+                    android:paddingBottom="8dp"
                     android:text="Address"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@android:color/black" />
@@ -75,9 +76,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
+                    android:background="@drawable/round"
                     android:ems="10"
                     android:gravity="center_horizontal"
                     android:inputType="textPersonName"
+                    android:padding="8dp"
                     android:textColor="@color/md_disabled_text_light_theme" />
 
                 <Button
