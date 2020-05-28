@@ -29,3 +29,7 @@ Menu items are mostly taken from PaleoHacks website.
 4. Create icon for the app.  
 
 5. Improve the app's UI design to production-level.
+
+<img src="https://user-images.githubusercontent.com/40174427/83121050-68e4fd00-a104-11ea-8dc2-805e4bf671d6.png" style="width:50px;height:60px;">
+
+
