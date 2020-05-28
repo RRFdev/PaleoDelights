@@ -30,6 +30,8 @@ Menu items are mostly taken from PaleoHacks website.
 
 5. Improve the app's UI design to production-level.
 
-<img src="https://user-images.githubusercontent.com/40174427/83121050-68e4fd00-a104-11ea-8dc2-805e4bf671d6.png" style="width:50px;height:60px;">
+![pd00](https://user-images.githubusercontent.com/40174427/83122068-b3b34480-a105-11ea-8085-6bf39c16c558.png)
+
+
 
 
