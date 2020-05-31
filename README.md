@@ -50,11 +50,13 @@ The user is also required to enter the address. The app by design does not detec
 
 ![image](https://user-images.githubusercontent.com/40174427/83354117-9bebf280-a389-11ea-8ded-39d4d663911c.png)
 
-Once the Get Location button from the previous screen is tabbed, the user is brought to a screen displaying the user's closest approximate location. Since the location is not guaranteed to be 100 percent accurate, the result is displayed in an EditText which the user can tap and make changes before finally confirming location and returning to the process payment screen.
+Once the Get Location button from the previous screen is tabbed, the user is brought to a screen displaying the user's closest approximate location. Since the location is not guaranteed to be 100 percent accurate, the result is displayed in an EditText which the user can tap and make changes before finally confirming location and returning to the process payment screen and finally tap the Confirm Order button to complete the order.
 
 ![image](https://user-images.githubusercontent.com/40174427/83354130-b02fef80-a389-11ea-86d7-8f27dd9eff3a.png)
 
+The order is added to a database set up in Firebase Firestore. The user is automatically directed to the delivery status screen upon placing an order, and the placed order is queried and then displayed. The onSnapshot() method of getting realtime updates from Firebase Firestore is used instead of a one-time query, enabling the UI to be automatically updated once the status of the order is changed from "IN PROGRESS" to "DELIVERED" from an update sent by the Paleo Delights Rider app. 
 
+A Service is also started at this point, enabling push notifications to be sent once the user's order had been delivered as well. 
 
 ![image](https://user-images.githubusercontent.com/40174427/83354143-c2119280-a389-11ea-8d3e-c3aac78fd1db.png)
 
