@@ -28,7 +28,7 @@ Upon starting up the app, the user is first greeted by a phone number registrati
 
 Once the user's phone number has been registered the user is then given access to the app. The Navigation Drawer template provided by Android Studio is used to as the basis for the app. 
 
-![image](https://user-images.githubusercontent.com/40174427/83354055-431c5a00-a389-11ea-971f-7fa9655e9e37.png)
+![image](https://user-images.githubusercontent.com/40174427/83357980-98b13080-a3a2-11ea-8b0f-65f88572d122.png)
 
 In the menu items screen the user can browse through a selection of paleo diet meals to order, separated into categories of foods, drinks and appetizers. The menu items are stored and referenced from a database set up in Firebase Firestore.
 
@@ -38,7 +38,7 @@ The images for the menu items are stored in Firebase Cloud Storage and then disp
 
 Tapping on any of the menu items opens up a screen detailing the selection and the user can then opt to place orders and add to cart.
 
-![image](https://user-images.githubusercontent.com/40174427/83354081-6a732700-a389-11ea-936a-bbba4f98df1b.png)
+![image](https://user-images.githubusercontent.com/40174427/83358012-d0b87380-a3a2-11ea-85a2-b01fb89d4a0c.png)
 
 Once orders are placed the user is then returned to the menu items screen with amount marker labels added to the menu items. The user can proceed to tap on any other menu items, place orders, return to the menu items screen and repeat as desired.
 
