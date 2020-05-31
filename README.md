@@ -38,7 +38,7 @@ Tapping on any of the menu items opens up a screen detailing the selection and t
 
 ![image](https://user-images.githubusercontent.com/40174427/83354081-6a732700-a389-11ea-936a-bbba4f98df1b.png)
 
-Once orders are placed the user is then returned to the menu items screen with amount marker labels added to the menu items. The user can proceed to tap on any other menu items, place orders, return the menu items screen and repeat as desired.
+Once orders are placed the user is then returned to the menu items screen with amount marker labels added to the menu items. The user can proceed to tap on any other menu items, place orders, return to the menu items screen and repeat as desired.
 
 ![image](https://user-images.githubusercontent.com/40174427/83354101-87a7f580-a389-11ea-8904-487e6564e149.png)
 
