@@ -1,8 +1,8 @@
 # Paleo Delights
 
-This is a sample app primarily demonstrating the use of Firebase's features. This app is meant to be used together with Paleo Delights Rider which I shall be developing later. 
+This is a demo primarily demonstrating the use of Firebase's features. This app is meant to be used together with Paleo Delights Rider which I shall be developing later. 
 
-Menu items are mostly taken from PaleoHacks website.
+Paleo Delights is a fictional paleo meals home delivery service based in the city of Kuantan in Malaysia. Menu items are mostly taken from PaleoHacks website.
 
 ## Stacks / templates used:
 
@@ -18,20 +18,11 @@ Menu items are mostly taken from PaleoHacks website.
 
 6. Navigation Drawer template as provided by Android Studio. 
 
-## TBD
-
-1. Implement a more proper method for sharing data between fragments. 
-
-2. Implement a routing, unit test and dependency injection framework.
-
-3. Re-write the whole code into a structure that uses data binding. 
-
-4. Create icon for the app.  
-
-5. Improve the app's UI design to production-level.
-
+## Walk through 
 
 ![image](https://user-images.githubusercontent.com/40174427/83353722-267f2280-a387-11ea-8aad-3c39827fe34d.png)
+
+Upon starting up the app, the user is first greeted by a phone number registration screen. Firebase UI is used to display the screen, with some changes to the theme to match the over coloring scheme of the app. 
 
 ![image](https://user-images.githubusercontent.com/40174427/83354036-2bdd6c80-a389-11ea-9003-609a8eb5f4a7.png)
 
