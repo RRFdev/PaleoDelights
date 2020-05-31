@@ -30,8 +30,23 @@ Menu items are mostly taken from PaleoHacks website.
 
 5. Improve the app's UI design to production-level.
 
-![pd00](https://user-images.githubusercontent.com/40174427/83122068-b3b34480-a105-11ea-8085-6bf39c16c558.png)
 
+![image](https://user-images.githubusercontent.com/40174427/83353722-267f2280-a387-11ea-8aad-3c39827fe34d.png)
 
+![image](https://user-images.githubusercontent.com/40174427/83354036-2bdd6c80-a389-11ea-9003-609a8eb5f4a7.png)
 
+![image](https://user-images.githubusercontent.com/40174427/83354055-431c5a00-a389-11ea-971f-7fa9655e9e37.png)
 
+![image](https://user-images.githubusercontent.com/40174427/83354071-57605700-a389-11ea-8dbb-d2fe0ae7346f.png)
+
+![image](https://user-images.githubusercontent.com/40174427/83354081-6a732700-a389-11ea-936a-bbba4f98df1b.png)
+
+![image](https://user-images.githubusercontent.com/40174427/83354101-87a7f580-a389-11ea-8904-487e6564e149.png)
+
+![image](https://user-images.githubusercontent.com/40174427/83354117-9bebf280-a389-11ea-8ded-39d4d663911c.png)
+
+![image](https://user-images.githubusercontent.com/40174427/83354130-b02fef80-a389-11ea-86d7-8f27dd9eff3a.png)
+
+![image](https://user-images.githubusercontent.com/40174427/83354143-c2119280-a389-11ea-8d3e-c3aac78fd1db.png)
+
+![image](https://user-images.githubusercontent.com/40174427/83354169-e2d9e800-a389-11ea-836e-acf87c510d10.png)
