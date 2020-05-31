@@ -42,11 +42,19 @@ Once orders are placed the user is then returned to the menu items screen with a
 
 ![image](https://user-images.githubusercontent.com/40174427/83354101-87a7f580-a389-11ea-8904-487e6564e149.png)
 
+Upon tapping the Checkout button at the bottom of the menu items screen, which only appears if at least one menu item had been added to cart, the user is then brought to the process payment screen. 
 
+The user is required to enter their credit card information in order to make a purchase, but since this is only a demo the fields are left empty.
+
+The user is also required to enter the address. The app by design does not detect the user's location automatically due to the inaccuracy present in the location-finding service. Instead the address is left blank at first requiring the user either entering manually, or tap at the Get Location button.
 
 ![image](https://user-images.githubusercontent.com/40174427/83354117-9bebf280-a389-11ea-8ded-39d4d663911c.png)
 
+Once the Get Location button from the previous screen is tabbed, the user is brought to a screen displaying the user's closest approximate location. Since the location is not guaranteed to be 100 percent accurate, the result is displayed in an EditText which the user can tap and make changes before finally confirming location and returning to the process payment screen.
+
 ![image](https://user-images.githubusercontent.com/40174427/83354130-b02fef80-a389-11ea-86d7-8f27dd9eff3a.png)
+
+
 
 ![image](https://user-images.githubusercontent.com/40174427/83354143-c2119280-a389-11ea-8d3e-c3aac78fd1db.png)
 
