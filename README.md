@@ -18,15 +18,19 @@ Paleo Delights is a fictional paleo meals home delivery service based in the cit
 
 6. Navigation Drawer template as provided by Android Studio. 
 
-## Walk through 
+## Walkthrough 
 
 ![image](https://user-images.githubusercontent.com/40174427/83353722-267f2280-a387-11ea-8aad-3c39827fe34d.png)
 
-Upon starting up the app, the user is first greeted by a phone number registration screen. Firebase UI is used to display the screen, with some changes to the theme to match the over coloring scheme of the app. 
+Upon starting up the app, the user is first greeted by a phone number registration screen. Firebase Authentication UI is used to display the screen, with some changes to the theme to match the coloring scheme of the app. The user phone number is then stored in the app for later on.
 
 ![image](https://user-images.githubusercontent.com/40174427/83354036-2bdd6c80-a389-11ea-9003-609a8eb5f4a7.png)
 
+Once the user's phone number has been registered, the user is then taken to the menu screen, where the user can then browse through a selection of meals. The menu items are stored and referenced from a database set up in Firebase Firestore.
+
 ![image](https://user-images.githubusercontent.com/40174427/83354055-431c5a00-a389-11ea-971f-7fa9655e9e37.png)
+
+Clicking any of the menu items opens up a screen detailing the selection and the user can then opt to place orders and add to cart. 
 
 ![image](https://user-images.githubusercontent.com/40174427/83354071-57605700-a389-11ea-8dbb-d2fe0ae7346f.png)
 
