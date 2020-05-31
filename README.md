@@ -6,8 +6,6 @@ Paleo Delights is a fictional paleo meals home delivery service based in the cit
 
 ## Stacks / templates used:
 
-1. [Material Dialogues](https://github.com/afollestad/material-dialogs) for creating a dialogue box in the app with minimal code.
-
 1. [Notify](https://github.com/Karn/notify) for creating a push notification within the app with minimal code.
 
 2. [Firebase Firestore](https://firebase.google.com/docs/firestore) for storing of menu item data as well as submitted orders.
