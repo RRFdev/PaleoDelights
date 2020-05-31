@@ -2,7 +2,7 @@
 
 This is a demo primarily demonstrating the use of Firebase's features. This app is meant to be used together with Paleo Delights Rider which I shall be developing later. 
 
-Paleo Delights is a fictional paleo meals home delivery service based in the city of Kuantan in Malaysia. Menu items are mostly taken from PaleoHacks website.
+Paleo Delights is a fictional paleo meals home delivery service based in the city of Kuantan in Malaysia. Menu items are mostly taken from PaleoHacks website. 
 
 ## Stacks / templates used:
 
@@ -34,11 +34,15 @@ In the menu items screen the user can browse through a selection of paleo diet m
 
 ![image](https://user-images.githubusercontent.com/40174427/83354071-57605700-a389-11ea-8dbb-d2fe0ae7346f.png)
 
-Clicking any of the menu items opens up a screen detailing the selection and the user can then opt to place orders and add to cart.
+Tapping on any of the menu items opens up a screen detailing the selection and the user can then opt to place orders and add to cart.
 
 ![image](https://user-images.githubusercontent.com/40174427/83354081-6a732700-a389-11ea-936a-bbba4f98df1b.png)
 
+Once orders are placed the user is then returned to the menu items screen with amount marker labels added to the menu items. The user can proceed to tap on any other menu items, place orders, return the menu items screen and repeat as desired.
+
 ![image](https://user-images.githubusercontent.com/40174427/83354101-87a7f580-a389-11ea-8904-487e6564e149.png)
+
+
 
 ![image](https://user-images.githubusercontent.com/40174427/83354117-9bebf280-a389-11ea-8ded-39d4d663911c.png)
 
