@@ -1,8 +1,8 @@
 # Paleo Delights
 
-This is a demo primarily demonstrating the use of Firebase's features. This app is meant to be used together with Paleo Delights Rider.
+This is a demo primarily demonstrating the use of Firebase's features. This app is meant to be used together with [Paleo Delights Rider](https://github.com/pawaka2020/PaleoDelightsRider).
 
-Paleo Delights is a fictional paleo meals home delivery service based in the city of Kuantan in Malaysia. Menu items are mostly taken from PaleoHacks website. 
+Paleo Delights is a fictional paleo meals home delivery service based in the city of Kuantan in Malaysia. Menu items are mostly taken from [PaleoHacks](https://blog.paleohacks.com/). 
 
 ## Stacks / templates used:
 
