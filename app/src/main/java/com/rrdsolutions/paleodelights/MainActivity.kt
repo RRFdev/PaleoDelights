@@ -35,11 +35,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activitymain)
 
         setSupportActionBar(appbar_main_toolbar)
-
-        //one-time declaration for Firebase code to work
         FirebaseApp.initializeApp(this)
         signup()
-        //found in res/menu folder
+
         appBarConfiguration = AppBarConfiguration(
             setOf(R.id.nav_menu, R.id.nav_deliverystatus, R.id.nav_aboutus, R.id.nav_location),
             activitymain_drawer_layout)
@@ -123,11 +121,6 @@ class MainActivity : AppCompatActivity() {
                     .build(), 1)
         }
 
-    }
-    fun makePhoneCall(){
-        val callIntent = Intent(Intent.ACTION_CALL)
-        callIntent.data = Uri.parse("tel:" + "21223131")
-        startActivity(callIntent)
     }
 
 

@@ -8,7 +8,7 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/nav_menu"
-            android:title="Menu" />
+            android:title="Menu Items" />
         <item
             android:id="@+id/nav_deliverystatus"
             android:title="Delivery Status" />

@@ -29,7 +29,7 @@ class MenuDetailFragment : Fragment() {
 
         val root = inflater.inflate(R.layout.fragment_menudetail, container, false)
         vm = ViewModelProvider(this).get(MenuDetailViewModel::class.java)
-        activity?.findViewById<Toolbar>(R.id.appbar_main_toolbar)?.title = "Menu"
+        activity?.findViewById<Toolbar>(R.id.appbar_main_toolbar)?.title = "Menu Items"
 
         return root
     }
