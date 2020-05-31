@@ -34,7 +34,7 @@ In the menu items screen the user can browse through a selection of paleo diet m
 
 The images for the menu items are stored in Firebase Cloud Storage and then displayed using Picasso. 
 
-![image](https://user-images.githubusercontent.com/40174427/83354071-57605700-a389-11ea-8dbb-d2fe0ae7346f.png)
+![image](https://user-images.githubusercontent.com/40174427/83358068-779d0f80-a3a3-11ea-8f5b-16287e0721e3.png)
 
 Tapping on any of the menu items opens up a screen detailing the selection and the user can then opt to place orders and add to cart.
 
