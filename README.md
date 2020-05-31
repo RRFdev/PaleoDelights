@@ -8,15 +8,17 @@ Paleo Delights is a fictional paleo meals home delivery service based in the cit
 
 1. [Material Dialogues](https://github.com/afollestad/material-dialogs) for creating a dialogue box in the app with minimal code.
 
-2. [Notify](https://github.com/Karn/notify) for creating a push notification within the app with minimal code.
+1. [Notify](https://github.com/Karn/notify) for creating a push notification within the app with minimal code.
 
-3. Firebase Firestore for storing of menu item data as well as submitted orders.
+2. [Firebase Firestore](https://firebase.google.com/docs/firestore) for storing of menu item data as well as submitted orders.
 
-4. Firebase Authentication for setting up phone authentication.
+3. [Firebase Authentication](https://firebase.google.com/docs/auth) for setting up phone authentication.
 
-5. Firebase Cloud Storage for storing images of menu items.
+4. [Firebase Cloud Storage](https://firebase.google.com/docs/storage) for storing images of menu items.
 
-6. Navigation Drawer template as provided by Android Studio. 
+6. [Picasso](https://github.com/square/picasso) for displaying images from Firebase Cloud Storage.
+
+5. Navigation Drawer template as provided by Android Studio. 
 
 ## Walkthrough 
 
@@ -31,6 +33,8 @@ Once the user's phone number has been registered the user is then given access t
 ![image](https://user-images.githubusercontent.com/40174427/83354055-431c5a00-a389-11ea-971f-7fa9655e9e37.png)
 
 In the menu items screen the user can browse through a selection of paleo diet meals to order, separated into categories of foods, drinks and appetizers. The menu items are stored and referenced from a database set up in Firebase Firestore.
+
+The images for the menu items are stored in Firebase Cloud Storage and then displayed using Picasso. 
 
 ![image](https://user-images.githubusercontent.com/40174427/83354071-57605700-a389-11ea-8dbb-d2fe0ae7346f.png)
 
