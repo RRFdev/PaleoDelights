@@ -119,6 +119,7 @@ class MainActivity : AppCompatActivity() {
                 AuthUI.getInstance()
                     .createSignInIntentBuilder()
                     .setAvailableProviders(provider)
+                    .setTheme(R.style.LoginTheme2)
                     .build(), 1)
         }
 
