@@ -1,6 +1,6 @@
 # Paleo Delights
 
-This is a demo primarily demonstrating the use of Firebase's features. This app is meant to be used together with Paleo Delights Rider which I shall be developing later. 
+This is a demo primarily demonstrating the use of Firebase's features. This app is meant to be used together with Paleo Delights Rider.
 
 Paleo Delights is a fictional paleo meals home delivery service based in the city of Kuantan in Malaysia. Menu items are mostly taken from PaleoHacks website. 
 
@@ -58,6 +58,12 @@ The order is added to a database set up in Firebase Firestore. The user is autom
 
 A Service is also started at this point, enabling push notifications to be sent once the user's order had been delivered as well. 
 
+The user can also check previous orders that has been delivered / canceled by tapping the View Previous Orders button.
+
 ![image](https://user-images.githubusercontent.com/40174427/83354143-c2119280-a389-11ea-8d3e-c3aac78fd1db.png)
 
+From the navigation drawer, the user can also in the meantime view the 'About Us' screen detailing Paleo Delights and its service.
+
 ![image](https://user-images.githubusercontent.com/40174427/83354169-e2d9e800-a389-11ea-836e-acf87c510d10.png)
+
+The location screen can be accesssed through the navigation drawer as well, displaying the location of the Paleo Delights store in a fictional address in Kompleks Teruntum, Kuantan.
