@@ -58,7 +58,7 @@ Once the Get Location button from the previous screen is tabbed, the user is bro
 
 The order is added to a database set up in Firebase Firestore. The user is automatically directed to the delivery status screen upon placing an order, and the placed order is queried and then displayed. The onSnapshot() method of getting realtime updates from Firebase Firestore is used instead of a one-time query, enabling the UI to be automatically updated once the status of the order is changed from "IN PROGRESS" to "DELIVERED" from an update sent by the Paleo Delights Rider app. 
 
-A Service is also started at this point, enabling push notifications to be sent once the user's order had been delivered as well. 
+A Service is also started at this point, enabling push notifications to be sent once the user's order has been delivered. 
 
 The user can also check previous orders that has been delivered / canceled by tapping the View Previous Orders button.
 
