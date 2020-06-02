@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
@@ -66,10 +65,8 @@ class MainActivity : AppCompatActivity() {
             val response = IdpResponse.fromResultIntent(data)
 
             if (resultCode == Activity.RESULT_OK) {
-                // Successfully signed in
                 val user = FirebaseAuth.getInstance().currentUser
                 if (user != null) {
-
                     val phonenumber = user.phoneNumber as String
                     Log.d("MainActivity", "phone " + phonenumber)
                     val vm = ViewModelProvider(this).get(MainViewModel::class.java)
@@ -84,22 +81,14 @@ class MainActivity : AppCompatActivity() {
                             Log.d("MainActivity", "No delivery in progress detected. DNService not started")
                         }
                     }
-
-
                     // User is signed in
-                } else {
-                    // No user is signed in
                 }
-                // ...
+
             }
-            else {
-                // Sign in failed. If response is null the user canceled the
-                // sign-in flow using the back button. Otherwise check
-                // response.getError().getErrorCode() and handle the error.
-                // ...
-            }
+
         }
     }
+    
     fun signup(){
         val provider = arrayListOf(
             AuthUI.IdpConfig.PhoneBuilder().build()
@@ -122,13 +111,5 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
-
-
-
-
-
-
-
 
 }

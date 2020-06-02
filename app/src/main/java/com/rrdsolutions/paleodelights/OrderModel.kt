@@ -12,8 +12,4 @@ object OrderModel {
         var status: String
     )
 
-    fun loadOrderFromFirebase(callback:(Boolean)->Unit){
-
-    }
-
 }
