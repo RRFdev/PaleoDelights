@@ -93,4 +93,9 @@ dependencies {
     //alternative to using Glide to display images stored in Firebase Cloud Storage.
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+    def room_version = "2.2.5"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+
 }

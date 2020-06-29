@@ -11,16 +11,15 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.gson.Gson
-import com.rrdsolutions.paleodelights.MenuModel
+import com.rrdsolutions.paleodelights.*
 import kotlinx.android.synthetic.main.fragment_processpayment.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 class ProcessPaymentViewModel: ViewModel() {
 
-    lateinit var menu: MenuModel.Menu
+    lateinit var menu: Menu
 
-    //var phonenumber = ""
     var time = ""
     var address =""
     var eta =""
@@ -38,9 +37,8 @@ class ProcessPaymentViewModel: ViewModel() {
 
                     val number = "Order #"+(count + 1).toString()
 
-
                     val itemlist = mutableListOf<String>()
-                    fun fillitemlist(array: MutableList<MenuModel.MenuItems>){
+                    fun fillitemlist(array: MutableList<MenuItems>){
                         for (i in 0 until array.size){
                             if (array[i].amount > 0){
                                 val item = array[i].name + " x " + array[i].amount.toString()
@@ -58,7 +56,7 @@ class ProcessPaymentViewModel: ViewModel() {
                         "eta" to eta,
                         "itemlist" to itemlist,
                         "address" to address,
-                        "status" to "IN PROGRESS",
+                        "status" to Status().IN_PROGRESS,
                         "rider" to ""
                     )
 
@@ -70,59 +68,35 @@ class ProcessPaymentViewModel: ViewModel() {
                             )
                             db.document("count").set(numberhash)
                                 .addOnCompleteListener{
-                                    Log.d("viewmodel", "number updated")
                                     callback(true)
                                 }
                         }
                         .addOnFailureListener{
-                            Log.d("viewmodel", "document write failed")
                             callback(false)
                         }
-                    //callback(result)
                 }
             }
             .addOnFailureListener{
-                Log.d("viewmodel", "no number found")
                 callback(false)
             }
     }
 
     fun checkDelivery(callback:(Boolean)->Unit){
-        Log.d("checkdelivery", "start")
         val db = FirebaseFirestore.getInstance()
             .collection("customer orders")
 
         db.whereEqualTo("phonenumber", FirebaseAuth.getInstance().currentUser?.phoneNumber as String)
-            .whereEqualTo("status", "IN PROGRESS")
+            .whereEqualTo("status", Status().IN_PROGRESS)
             .get()
             .addOnSuccessListener{documents ->
-                Log.d("checkdelivery", "success")
-
                 if (documents.isEmpty){
-                    Log.d("checkdelivery", "documents are empty")
                     callback(true)
                 }
-                else Log.d("checkdelivery", "documents are not empty")
-                for (document in documents){
-                    val id = document.id
-                    Log.d("checkdelivery", "id " + id)
-                    callback(false)
-                }
-
+                else callback(false)
             }
-
             .addOnFailureListener{documents ->
-                Log.d("checkdelivery", "failure")
-
+                callback(false)
             }
-
-
-
     }
-
-
-
-
-
 
 }

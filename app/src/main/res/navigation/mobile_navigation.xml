@@ -9,28 +9,59 @@
         android:id="@+id/nav_menu"
         android:name="com.rrdsolutions.paleodelights.ui.menuitems.MenuFragment"
         android:label="Menu Items"
-        tools:layout="@layout/fragment_menu" />
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/tomenudetail"
+            app:destination="@id/nav_menudetail" />
+        <action
+            android:id="@+id/toprocesspayment"
+            app:destination="@id/nav_processpayment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_menudetail"
+        android:name="com.rrdsolutions.paleodelights.ui.menudetail.MenuDetailFragment"
+        android:label="Menu Items"
+        tools:layout="@layout/fragment_menudetail" >
+        <action
+            android:id="@+id/returntomenu"
+            app:destination="@id/nav_menu"
+            app:popUpTo="@id/nav_menu"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_processpayment"
+        android:name="com.rrdsolutions.paleodelights.ui.processpayment.ProcessPaymentFragment"
+        android:label="Process Payment"
+        tools:layout="@layout/fragment_processpayment" >
+        <action
+            android:id="@+id/todeliverystatus"
+            app:destination="@id/nav_deliverystatus"
+            app:popUpTo="@id/nav_processpayment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/togetaddress"
+            app:destination="@id/nav_getaddress" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_getaddress"
+        android:name="com.rrdsolutions.paleodelights.ui.getaddress.GetAddressFragment"
+        android:label="Get Address"
+        tools:layout="@layout/fragment_getaddress" >
+        <action
+            android:id="@+id/returntoprocesspayment"
+            app:destination="@id/nav_processpayment"
+            app:popUpTo="@id/nav_processpayment"
+            app:popUpToInclusive="true" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_deliverystatus"
         android:name="com.rrdsolutions.paleodelights.ui.deliverystatus.DeliveryStatusFragment"
         android:label="Delivery Status"
         tools:layout="@layout/fragment_deliverystatus" />
-
-    <fragment
-        android:id="@+id/nav_aboutus"
-        android:name="com.rrdsolutions.paleodelights.ui.aboutus.AboutUsFragment"
-        android:label="About Us"
-        tools:layout="@layout/fragment_aboutus" />
-
-    <fragment
-        android:id="@+id/nav_location"
-        android:name="com.rrdsolutions.paleodelights.ui.location.LocationFragment"
-        android:label="Location"
-        tools:layout="@layout/fragment_location" />
-
-
-
 
 
 </navigation>

@@ -13,6 +13,7 @@ import androidx.core.app.NotificationManagerCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
+import com.rrdsolutions.paleodelights.Status
 import io.karn.notify.Notify
 
 //import io.karn.notify.Notify
@@ -23,9 +24,6 @@ class DNService : IntentService("CTService") {
     override fun onHandleIntent(intent: Intent?) {
 
         val phonenumber = FirebaseAuth.getInstance().currentUser?.phoneNumber as String
-        var documentname = ""
-        Log.d("DNService", "DNService Started")
-        Log.d("DNService", "phone number " + phonenumber)
 
         getDocumentName(phonenumber) {documentname->
             if (documentname == ""){
@@ -56,12 +54,10 @@ class DNService : IntentService("CTService") {
             .addOnSuccessListener { documents ->
                 for (document in documents){
                     callback(document.id)
-                    Log.d("DNService", "query successful. document.id = $document.id")
                 }
             }
             .addOnFailureListener{
                 callback("")
-                Log.d("DNService", "query failed")
             }
 
     }
@@ -73,27 +69,24 @@ class DNService : IntentService("CTService") {
 
         db.addSnapshotListener { snapshot, e ->
             if (e != null) {
-                Log.d("DNService", "Listen failed.", e)
                 return@addSnapshotListener
             }
             if (snapshot != null && snapshot.exists()) {
                 val status = snapshot.data?.get("status") as String
                 callback(status)
-                Log.d("DNService", "current status: $status")
 
             } else {
                 callback("")
-                Log.d("DNService", "Current data: null")
             }
         }
     }
 
     fun notify(status: String, documentname:String) {
-        var desc: String = ""
+        var desc = ""
         when (status){
-            "DELIVERED"->
+            Status().DELIVERED->
                 desc = "Thank you for your purchase. $documentname has been delivered to your location."
-            "CANCELED"->
+            Status().CANCELED->
                 desc ="Sorry. $documentname has been canceled."
         }
         Notify
@@ -106,12 +99,7 @@ class DNService : IntentService("CTService") {
     }
 
     fun updateDeliveryStatus(){
-
         val intent = Intent().apply{ action = "DeliveryStatusFragment" }
-        //intent.action = "DeliveryStatusFragment"
         sendBroadcast(intent)
-
-
-
     }
 }

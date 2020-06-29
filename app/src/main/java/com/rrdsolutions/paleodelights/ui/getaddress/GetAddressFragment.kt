@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -30,14 +31,11 @@ import java.io.IOException
 
 class GetAddressFragment: Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
-    lateinit var viewmodel: GetAddressViewModel
-
     lateinit var map: GoogleMap
     lateinit var fusedLocationClient: FusedLocationProviderClient
     lateinit var lastLocation: Location
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        viewmodel = ViewModelProviders.of(this).get(GetAddressViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_getaddress, container, false)
         activity?.findViewById<Toolbar>(R.id.appbar_main_toolbar)?.title = "Get Address"
         return root
@@ -52,21 +50,15 @@ class GetAddressFragment: Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClic
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity().baseContext)
 
         btn.setOnClickListener{
-
             val editedaddress = edt.getText().toString()
-            Log.e("maptest", "editedaddress =$editedaddress")
-
             activity?.getPreferences( 0)?.edit()
                 ?.putString("address", editedaddress)?.apply()
-
-
-            Log.e("maptest", "saved string is " + activity?.getPreferences( 0)?.getString("address", ""))
 
             moveBackToProcessPayment()
         }
 
         activity?.findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.loadingscreenmain2)?.visibility =
-            View.INVISIBLE
+            View.GONE
     }
 
     override fun onMarkerClick(p0: Marker?) = false
@@ -82,8 +74,6 @@ class GetAddressFragment: Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClic
             && ActivityCompat.checkSelfPermission(this.context as Activity, Manifest.permission.ACCESS_COARSE_LOCATION)
             != PackageManager.PERMISSION_GRANTED) {
 
-            Log.d("maptest", "User permission not granted")
-
             return
         }
         //**actual code starts here*//
@@ -95,14 +85,13 @@ class GetAddressFragment: Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClic
                     lastLocation = it
                     ////THIS ONE!!!!
                     val userLoc = LatLng(it.latitude, it.longitude)
-                    Log.d("maptest", "lat = " + it.latitude + " lng + " + it.longitude)
+
                     val titleStr = getAddress(userLoc)
                     map.addMarker(MarkerOptions().position(userLoc).title(titleStr)).showInfoWindow()
                     map.moveCamera(CameraUpdateFactory.newLatLngZoom(userLoc, 18f))
                     //17 is almost perfect.
-                    Log.d("maptest", "titleStr is " + titleStr)
 
-                    edt.setText(titleStr)
+                     edt.setText(titleStr)
                 }
             }
         }
@@ -112,23 +101,17 @@ class GetAddressFragment: Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClic
         val geocoder = Geocoder(this.context as Activity)
         var result = ""
 
-        try {
-            val address = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1)
-            if (null != address && !address.isEmpty()) {
-                Log.e("maptest", "address is " +address.toString())
-                result = address[0].getAddressLine(0)
-            }
+        val address = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1)
+        if (null != address && !address.isEmpty()) {
+            result = address[0].getAddressLine(0)
         }
-        catch (e: IOException) {
-            Log.e("maptest", "address fetch failed")
-        }
-
         return result
     }
 
     fun moveBackToProcessPayment(){
-        val fm = fragmentManager
-        fm?.popBackStackImmediate()
+        view?.let {
+            Navigation.findNavController(it)
+                .navigate(R.id.returntoprocesspayment)}
     }
 
 

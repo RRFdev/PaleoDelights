@@ -12,13 +12,14 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.transition.AutoTransition
 import androidx.transition.Fade
 import androidx.transition.TransitionManager
 import com.google.firebase.auth.FirebaseAuth
-import com.rrdsolutions.paleodelights.OrderModel
+import com.rrdsolutions.paleodelights.Order
 import com.rrdsolutions.paleodelights.R
 //import kotlinx.android.synthetic.main.ecv_bottomcard.view.botlayout
 import kotlinx.android.synthetic.main.fragment_deliverystatus.*
@@ -32,30 +33,19 @@ import kotlinx.android.synthetic.main.ordercard.view.*
 import kotlinx.android.synthetic.main.simpletext.view.*
 
 class DeliveryStatusFragment : Fragment() {
-    lateinit var vm: DeliveryStatusViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+    val vm: DeliveryStatusViewModel by viewModels()
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-
-        vm = ViewModelProvider(this).get(DeliveryStatusViewModel::class.java)
-
-        val root = inflater.inflate(R.layout.fragment_deliverystatus, container, false)
-
         activity?.findViewById<Toolbar>(R.id.appbar_main_toolbar)?.title = "Delivery Status"
-
-        return root
-
+        return inflater.inflate(R.layout.fragment_deliverystatus, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         vm.phonenumber = FirebaseAuth.getInstance().currentUser?.phoneNumber as String
-
-        Log.d("_delivery", "delivery start")
 
         button3.setOnClickListener {
             cardholder.removeAllViews()
@@ -67,27 +57,17 @@ class DeliveryStatusFragment : Fragment() {
 
             }
             vm.buttontext.value = vm.text
-            Log.d("_delivery", "buttontext.value " + vm.buttontext.value as String)
-            //button3.text = vm.text
         }
 
         vm.buttontext.observe(viewLifecycleOwner, Observer {
             button3.text = vm.buttontext.value
 
             vm.loadOrders(vm.buttontext.value as String) { taskCompleted ->
-                if (taskCompleted) {
-                    buildOrderCards()
+                if (taskCompleted) buildOrderCards()
+                else noOrders()
 
-                    activity?.findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.loadingscreenmain2)?.visibility =
-                        View.INVISIBLE
-                }
-                else {
-                    //Put message "No delivery items"
-                    noOrders()
-                    activity?.findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.loadingscreenmain2)?.visibility =
-                        View.INVISIBLE
-
-                }
+                activity?.findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.loadingscreenmain2)?.visibility =
+                    View.GONE
             }
 
         })
@@ -97,21 +77,12 @@ class DeliveryStatusFragment : Fragment() {
                 Log.d("_broadcast", "broadcast received")
                 cardholder.removeAllViews()
                 vm.loadOrders(vm.buttontext.value as String) { taskCompleted ->
-                        if (taskCompleted) {
-                            buildOrderCards()
+                    if (taskCompleted) buildOrderCards()
+                    else noOrders()
 
-                            activity?.findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.loadingscreenmain2)?.visibility =
-                                View.INVISIBLE
-                        }
-                        else {
-                            //Put message "No delivery items"
-                            noOrders()
-                            activity?.findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.loadingscreenmain2)?.visibility =
-                                View.INVISIBLE
-
-                        }
+                    activity?.findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.loadingscreenmain2)?.visibility =
+                        View.GONE
                     }
-                Log.d("_broadcast", "View Previous Orders: Views removed")
             }
 
         }
@@ -146,7 +117,7 @@ class DeliveryStatusFragment : Fragment() {
                     ordercard.addresstxt.text = vm.orderlist[i].address
 
                     cardholder.addView(ordercard)
-                    vm.orderlist = arrayListOf<OrderModel.Order>()
+                    vm.orderlist = arrayListOf<Order>()
                 }
             }
             "View Current Order"->{
@@ -186,17 +157,14 @@ class DeliveryStatusFragment : Fragment() {
                     ordercard.addresstxt.text = vm.orderlist[i].address
 
                     cardholder.addView(ordercard)
-                    vm.orderlist = arrayListOf<OrderModel.Order>()
+                    vm.orderlist = arrayListOf<Order>()
                 }
             }
         }
-
-
-
     }
 
     fun noOrders() {
-        //cardholder.removeAllViews()
+
         val notificationcard = layoutInflater.inflate(R.layout.notificationcard, null)
         notificationcard.notificationtext.text = "No deliveries present"
 

@@ -6,7 +6,8 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
-import com.rrdsolutions.paleodelights.OrderModel
+import com.rrdsolutions.paleodelights.Order
+import com.rrdsolutions.paleodelights.Status
 import com.rrdsolutions.paleodelights.ui.processpayment.ProcessPaymentViewModel
 import org.json.JSONArray
 
@@ -15,7 +16,7 @@ class DeliveryStatusViewModel: ViewModel() {
 
     var phonenumber = FirebaseAuth.getInstance().currentUser?.phoneNumber as String
 
-    var orderlist = arrayListOf<OrderModel.Order>()
+    var orderlist = arrayListOf<Order>()
     var buttontext = MutableLiveData<String>().apply { postValue("View Previous Orders")}
     var text = "View Previous Orders"
 
@@ -28,7 +29,7 @@ class DeliveryStatusViewModel: ViewModel() {
             val db = FirebaseFirestore.getInstance()
                 .collection("customer orders")
                 .whereEqualTo("phonenumber", phonenumber)
-                .whereEqualTo("status", "IN PROGRESS")
+                .whereEqualTo("status", Status().IN_PROGRESS)
 
             db.get()
                 .addOnSuccessListener{documents ->
@@ -36,7 +37,7 @@ class DeliveryStatusViewModel: ViewModel() {
                     if (documents.size()== 0) callback(false)
                     else{
                         for (document in documents){
-                            val order = OrderModel.Order(
+                            val order = Order(
                                 document.id,
                                 document.data["phonenumber"] as String,
                                 document.data["time"] as String,
@@ -63,14 +64,14 @@ class DeliveryStatusViewModel: ViewModel() {
             val db = FirebaseFirestore.getInstance()
                 .collection("customer orders")
                 .whereEqualTo("phonenumber", phonenumber)
-                .whereIn("status", listOf("DELIVERED", "CANCELED"))
+                .whereIn("status", listOf(Status().DELIVERED, Status().CANCELED))
 
             db.get()
                 .addOnSuccessListener{documents ->
                     if (documents.size()== 0) callback(false)
                     else{
                         for (document in documents){
-                            val order = OrderModel.Order(
+                            val order = Order(
                                 document.id,
                                 document.data["phonenumber"] as String,
                                 document.data["time"] as String,
@@ -104,9 +105,5 @@ class DeliveryStatusViewModel: ViewModel() {
                 }
             }
         }
-
-
-
     }
-
 }

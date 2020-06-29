@@ -14,10 +14,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import com.google.gson.Gson
+import com.rrdsolutions.paleodelights.*
 import com.rrdsolutions.paleodelights.ui.deliverystatus.DNService
-import com.rrdsolutions.paleodelights.MenuModel
-import com.rrdsolutions.paleodelights.R
 import com.rrdsolutions.paleodelights.ui.deliverystatus.DeliveryStatusFragment
 //import com.rrdsolutions.paleodelights.repositories.MenuObject
 //import com.rrdsolutions.paleodelights.repositories.MenuObject2.saveToFirebase
@@ -36,30 +38,19 @@ import java.util.*
 
 class ProcessPaymentFragment : Fragment() {
 
-    lateinit var vm: ProcessPaymentViewModel
+    val vm: ProcessPaymentViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        //ViewModelProviders.of(this).get(ProcessPaymentViewModel::class.java)
-        vm = ViewModelProvider(this).get(ProcessPaymentViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_processpayment, container, false)
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         activity?.findViewById<Toolbar>(R.id.appbar_main_toolbar)?.title = "Process Payment"
-        return root
-
+        return inflater.inflate(R.layout.fragment_processpayment, container, false)
     }
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getActivity()?.findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.loadingscreenmain2)?.visibility =
-            View.GONE
-
-        vm.menu = MenuModel.menu
+        val savedmenu = activity?.getPreferences(0)?.getString("savedmenu", "")
+        vm.menu = Gson().fromJson(savedmenu, Menu::class.java)
 
         buildPurchaseDetails(vm.menu.foodmenu)
         buildPurchaseDetails(vm.menu.drinkmenu)
@@ -67,7 +58,6 @@ class ProcessPaymentFragment : Fragment() {
         buildPurchaseTotal()
 
         val fromGetAdressFragment = activity?.getPreferences( 0)?.getString("address", "").toString()
-        Log.d("_pptest", "address = $fromGetAdressFragment")
         edt_address.setText(fromGetAdressFragment)
 
         locationbutton.setOnClickListener {
@@ -80,19 +70,14 @@ class ProcessPaymentFragment : Fragment() {
                 Toast.makeText(activity, "Please enter address before submitting order", Toast.LENGTH_SHORT).show()
             }
             else{
-
                 getActivity()?.findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.loadingscreenmain2)?.visibility =
                     View.VISIBLE
-
                 vm.checkDelivery{ empty->
-                    if (empty == false){
+                    if (!empty){
                         val text = "To ensure our riders are not overburdened, please do not order more than one delivery at a time."
                         Toast.makeText(activity, text, Toast.LENGTH_LONG).show()
-                        getActivity()?.findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.loadingscreenmain2)?.visibility =
-                            View.INVISIBLE
                     }
                     else{
-
                         @SuppressLint("SimpleDateFormat")
                         fun getDate(): String{
                             val date = Date()
@@ -105,30 +90,20 @@ class ProcessPaymentFragment : Fragment() {
 
                         vm.saveOrder{ taskCompleted->
                             if (taskCompleted){
-
-                                for (i in 0 until MenuModel.menu.foodmenu.size) {
-                                    MenuModel.menu.foodmenu[i].amount = 0
-                                }
-                                for (i in 0 until MenuModel.menu.drinkmenu.size) {
-                                    MenuModel.menu.drinkmenu[i].amount = 0
-                                }
-                                for (i in 0 until MenuModel.menu.appetizermenu.size) {
-                                    MenuModel.menu.appetizermenu[i].amount = 0
-                                }
+                                activity?.getPreferences(0)?.edit()?.clear()?.apply()
                                 activity?.startService(Intent(activity, DNService::class.java))
                                 moveToDeliveryStatus()
-                                activity?.findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.loadingscreenmain2)?.visibility =
-                                    View.INVISIBLE
+
                             }
                         }
-
                     }
-
+                    activity?.findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.loadingscreenmain2)?.visibility =
+                        View.GONE
                 }
-
             }
-
         }
+        getActivity()?.findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.loadingscreenmain2)?.visibility =
+            View.GONE
     }
 
     override fun onResume(){
@@ -139,7 +114,7 @@ class ProcessPaymentFragment : Fragment() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun buildPurchaseDetails(array: MutableList<MenuModel.MenuItems>) {
+    private fun buildPurchaseDetails(array: MutableList<MenuItems>) {
 
         for (i in array.indices) {
             if (array[i].amount != 0) {
@@ -174,7 +149,7 @@ class ProcessPaymentFragment : Fragment() {
         return totalproduct
     }
 
-    private fun calculateProductFor(array: MutableList<MenuModel.MenuItems>): Double {
+    private fun calculateProductFor(array: MutableList<MenuItems>): Double {
         var product = 0.0
         for (i in array.indices) {
             product += (array[i].price * array[i].amount)
@@ -183,20 +158,15 @@ class ProcessPaymentFragment : Fragment() {
     }
 
     private fun moveToDeliveryStatus() {
-
-        val fm = fragmentManager
-        fm?.beginTransaction()
-            ?.replace(R.id.content_main_nav_host_fragment, DeliveryStatusFragment())
-            ?.commit()
+        view?.let {
+            Navigation.findNavController(it)
+                .navigate(R.id.todeliverystatus)}
     }
 
     private fun moveToGetAddress(){
-
-        val fm = fragmentManager
-        fm?.beginTransaction()
-            ?.replace(R.id.content_main_nav_host_fragment, GetAddressFragment())
-            ?.addToBackStack(null)
-            ?.commit()
+        view?.let {
+            Navigation.findNavController(it)
+                .navigate(R.id.togetaddress)}
     }
 
     private fun getCoordinateFromAddress(myLocation:String){
