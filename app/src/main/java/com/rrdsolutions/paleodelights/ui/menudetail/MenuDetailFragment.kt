@@ -2,7 +2,6 @@ package com.rrdsolutions.paleodelights.ui.menudetail
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,25 +9,17 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.google.gson.Gson
 import com.rrdsolutions.paleodelights.*
-import com.rrdsolutions.paleodelights.ui.menuitems.MenuFragment
-import com.rrdsolutions.paleodelights.ui.menuitems.MenuViewModel
-import com.rrdsolutions.paleodelights.ui.processpayment.ProcessPaymentFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_menudetail.*
-import kotlinx.android.synthetic.main.menucard.view.*
-import kotlinx.android.synthetic.main.menucard.view.image
 import java.math.BigDecimal
 import java.math.RoundingMode
-
 
 class MenuDetailFragment : Fragment() {
 
     val vm: MenuDetailViewModel by viewModels()
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         activity?.findViewById<Toolbar>(R.id.appbar_main_toolbar)?.title = "Menu Items"

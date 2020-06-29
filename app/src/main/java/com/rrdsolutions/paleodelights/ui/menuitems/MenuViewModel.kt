@@ -1,17 +1,9 @@
 package com.rrdsolutions.paleodelights.ui.menuitems
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.util.Log
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.storage.FirebaseStorage
-import com.google.gson.Gson
 import com.rrdsolutions.paleodelights.*
-import java.io.Serializable
 
 class MenuViewModel(private var ssh: SavedStateHandle): ViewModel() {
 

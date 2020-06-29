@@ -1,6 +1,5 @@
 package com.rrdsolutions.paleodelights
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore

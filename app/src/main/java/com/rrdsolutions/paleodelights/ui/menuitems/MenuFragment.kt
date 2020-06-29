@@ -2,22 +2,16 @@ package com.rrdsolutions.paleodelights.ui.menuitems
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.*
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.PagerAdapter
 import com.google.gson.Gson
 import com.rrdsolutions.paleodelights.*
-
-import com.rrdsolutions.paleodelights.ui.menudetail.MenuDetailFragment
-//import com.rrdsolutions.paleodelights.repositories.MenuObject
-import com.rrdsolutions.paleodelights.ui.processpayment.ProcessPaymentFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_menu.*
 import kotlinx.android.synthetic.main.menucard.view.*

@@ -1,20 +1,10 @@
 package com.rrdsolutions.paleodelights.ui.processpayment
 
-import android.app.Activity
-import android.location.Address
-import android.location.Geocoder
-import android.location.Location
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.google.common.primitives.UnsignedBytes.toInt
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QueryDocumentSnapshot
-import com.google.gson.Gson
 import com.rrdsolutions.paleodelights.*
-import kotlinx.android.synthetic.main.fragment_processpayment.*
-import java.text.SimpleDateFormat
-import java.util.*
 
 class ProcessPaymentViewModel: ViewModel() {
 

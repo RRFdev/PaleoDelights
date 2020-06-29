@@ -1,22 +1,12 @@
 package com.rrdsolutions.paleodelights.ui.deliverystatus
 
 import android.app.IntentService
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.Service
-import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.util.Log
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import com.rrdsolutions.paleodelights.Status
 import io.karn.notify.Notify
-
-//import io.karn.notify.Notify
 
 @Suppress("NAME_SHADOWING")
 class DNService : IntentService("CTService") {

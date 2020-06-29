@@ -1,15 +1,8 @@
 package com.rrdsolutions.paleodelights.ui.menudetail
 
-
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.gson.Gson
 import com.rrdsolutions.paleodelights.Menu
-
-
 
 class MenuDetailViewModel(private var ssh: SavedStateHandle): ViewModel() {
 

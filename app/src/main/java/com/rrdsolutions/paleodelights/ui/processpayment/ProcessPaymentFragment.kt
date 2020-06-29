@@ -15,15 +15,10 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.google.gson.Gson
 import com.rrdsolutions.paleodelights.*
 import com.rrdsolutions.paleodelights.ui.deliverystatus.DNService
-import com.rrdsolutions.paleodelights.ui.deliverystatus.DeliveryStatusFragment
-//import com.rrdsolutions.paleodelights.repositories.MenuObject
-//import com.rrdsolutions.paleodelights.repositories.MenuObject2.saveToFirebase
-import com.rrdsolutions.paleodelights.ui.getaddress.GetAddressFragment
 import kotlinx.android.synthetic.main.fragment_processpayment.*
 import kotlinx.android.synthetic.main.menuitempurchased.view.*
 import kotlinx.android.synthetic.main.menuitempurchasedtotal.view.*
@@ -32,9 +27,6 @@ import java.math.BigDecimal
 import java.math.RoundingMode
 import java.text.SimpleDateFormat
 import java.util.*
-
-//test11
-
 
 class ProcessPaymentFragment : Fragment() {
 

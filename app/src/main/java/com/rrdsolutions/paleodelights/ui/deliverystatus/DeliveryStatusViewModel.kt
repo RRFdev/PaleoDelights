@@ -5,11 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.gson.Gson
 import com.rrdsolutions.paleodelights.Order
 import com.rrdsolutions.paleodelights.Status
-import com.rrdsolutions.paleodelights.ui.processpayment.ProcessPaymentViewModel
-import org.json.JSONArray
 
 @Suppress("UNCHECKED_CAST")
 class DeliveryStatusViewModel: ViewModel() {

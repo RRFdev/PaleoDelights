@@ -13,7 +13,6 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -25,9 +24,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.rrdsolutions.paleodelights.R
-import com.rrdsolutions.paleodelights.ui.processpayment.ProcessPaymentFragment
 import kotlinx.android.synthetic.main.fragment_getaddress.*
-import java.io.IOException
 
 class GetAddressFragment: Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
