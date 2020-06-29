@@ -4,8 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'androidx.navigation.safeargs'
 //add this to use Firebase
 apply plugin: 'com.google.gms.google-services'
-//add this to use Room
-apply plugin: "kotlin-kapt"
+
 android {
     compileSdkVersion 29
 
@@ -91,5 +90,5 @@ dependencies {
     implementation "io.karn:notify:1.3.0"
     //alternative to using Glide to display images stored in Firebase Cloud Storage.
     implementation 'com.squareup.picasso:picasso:2.71828'
-    
+
 }
