@@ -25,6 +25,7 @@ import java.math.RoundingMode
 
 import androidx.lifecycle.observe
 import androidx.navigation.Navigation
+import com.google.firebase.auth.FirebaseAuth
 
 class MenuFragment : Fragment() {
 
@@ -43,6 +44,10 @@ class MenuFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //if (FirebaseAuth.getInstance().currentUser == null) activity?.finish()
+
+
 
         val savedmenu = activity?.getPreferences(0)?.getString("savedmenu", "")
         if (savedmenu == ""){
@@ -195,8 +200,6 @@ class MenuFragment : Fragment() {
             Navigation.findNavController(it)
                 .navigate(R.id.tomenudetail) }
     }
-
-
 
 }
 

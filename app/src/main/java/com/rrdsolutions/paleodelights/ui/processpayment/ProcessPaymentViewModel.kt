@@ -14,6 +14,12 @@ class ProcessPaymentViewModel: ViewModel() {
     var address =""
     var eta =""
 
+
+    fun test(){
+        val user = FirebaseAuth.getInstance().currentUser
+        var eta = user?.uid
+    }
+
     fun saveOrder(callback: (Boolean)-> Unit){
 
         val db = FirebaseFirestore.getInstance()
@@ -74,6 +80,9 @@ class ProcessPaymentViewModel: ViewModel() {
     fun checkDelivery(callback:(Boolean)->Unit){
         val db = FirebaseFirestore.getInstance()
             .collection("customer orders")
+
+
+
 
         db.whereEqualTo("phonenumber", FirebaseAuth.getInstance().currentUser?.phoneNumber as String)
             .whereEqualTo("status", Status().IN_PROGRESS)
