@@ -23,15 +23,12 @@ import kotlinx.android.synthetic.main.appbar_main.*
 class MainActivity : AppCompatActivity() {
 
     lateinit var appBarConfiguration: AppBarConfiguration
-    val vm:MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activitymain)
 
         setSupportActionBar(appbar_main_toolbar)
-
-        signup()
 
         appBarConfiguration = AppBarConfiguration(
             setOf(R.id.nav_menu, R.id.nav_deliverystatus, R.id.nav_aboutus, R.id.nav_location),
@@ -52,60 +49,5 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    //for starting up DNService
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == 1) {
-
-            val response = IdpResponse.fromResultIntent(data)
-
-            if (resultCode == Activity.RESULT_OK) {
-                val user = FirebaseAuth.getInstance().currentUser
-                if (user != null) {
-                    val phonenumber = user.phoneNumber as String
-
-                    vm.setPhoneNumber(phonenumber)
-
-                    vm.checkDelivery{deliveryPresent->
-                        if (deliveryPresent){
-                            startService(Intent(this, DNService::class.java))
-                        }
-                    }
-                }
-
-            }
-
-//            else{
-//               if (response == null) finish()
-//            }
-
-        }
-    }
-
-//    override fun onBackPressed(){
-////        val homeIntent = Intent(Intent.ACTION_MAIN)
-////        homeIntent.addCategory(Intent.CATEGORY_HOME)
-////        homeIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-////        startActivity(homeIntent)
-//        finish()
-//    }
-
-    fun signup(){
-        val user = FirebaseAuth.getInstance().currentUser
-
-        if (user == null){
-            val provider = arrayListOf(
-                AuthUI.IdpConfig.PhoneBuilder().build()
-            )
-
-            startActivityForResult(
-                AuthUI.getInstance()
-                    .createSignInIntentBuilder()
-                    .setAvailableProviders(provider)
-                    .setTheme(R.style.LoginTheme2)
-                    .build(), 1)
-        }
-    }
 
 }

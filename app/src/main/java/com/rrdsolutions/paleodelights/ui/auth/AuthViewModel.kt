@@ -1,10 +1,11 @@
-package com.rrdsolutions.paleodelights
+package com.rrdsolutions.paleodelights.ui.auth
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
+import com.rrdsolutions.paleodelights.Status
 
-class MainViewModel(private var ssh: SavedStateHandle): ViewModel() {
+class AuthViewModel(private var ssh: SavedStateHandle): ViewModel() {
 
     var phonenumber = ""
 
